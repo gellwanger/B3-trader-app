@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import getCompany from '../services/index';
+import {getStock, getCompany} from '../services/index';
 
 function Home() {
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
-
+  
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
   }
@@ -13,29 +13,39 @@ function Home() {
     setQuantity({ [target.name]: target.value });
   }
 
-  const getAPI = async () => {
-    const aqui = await getCompany(stock.stock);
-    console.log('aqui')
-    console.log(aqui[0].vl_medio)
-    return aqui;
+  const getCompanyAPI = async () => {
+    const allCompanys = await getCompany();
+    console.log(allCompanys[0].cd_acao)
+    return allCompanys;
+  }
+
+  const getStockAPI = async () => {
+    const company = await getStock(stock.stock);
+    console.log(company[0])
+    return company;
   }
 
   const handleClick = () => {
+    // getCompanyAPI();
+    // getStockAPI();
+    findCompany();
     onclick();
-    getAPI();
-    console.log('clique')
-    console.log(stock.stock)
   }
 
-  const findCompany = () => {
-    if (stock.stock === getAPI) return console.log('Acerto miserávi')
-    return console.log('Errou!!!')
+  const findCompany = async () => {
+    const allCompanys = await getCompany();
+    const company = await getStock(stock.stock);
+
+    const arrayCompany = allCompanys[0].cd_acao;
+    const specifyCompany = company[0].cd_acao;
+
+   const compareTickers = allCompanys.find((element) => element.cd_acao === specifyCompany).cd_acao;
+   return console.log('Deu certo: ', compareTickers);
   }
 
   const onclick = () => {
     const number = Math.round((Math.random() * 100));
-    // findCompany();
-    // getAPI();
+    return number;
   }
 
   return (
