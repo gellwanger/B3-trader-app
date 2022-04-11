@@ -2,18 +2,8 @@ import React, { useState } from 'react';
 import getCompany from '../services/index';
 
 function Home() {
-  const [data, setData] = useState([]);
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
-  
-  // useEffect(() => {
-  //   const find = async () => {
-  //     const take = await getCompany();
-  //     setData(take);
-  //     console.log(data[0])
-  //   }
-  //   find();
-  // });
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -23,20 +13,29 @@ function Home() {
     setQuantity({ [target.name]: target.value });
   }
 
+  const getAPI = async () => {
+    const aqui = await getCompany(stock.stock);
+    console.log('aqui')
+    console.log(aqui[0].vl_medio)
+    return aqui;
+  }
+
   const handleClick = () => {
     onclick();
+    getAPI();
+    console.log('clique')
+    console.log(stock.stock)
+  }
+
+  const findCompany = () => {
+    if (stock.stock === getAPI) return console.log('Acerto miserávi')
+    return console.log('Errou!!!')
   }
 
   const onclick = () => {
     const number = Math.round((Math.random() * 100));
-    findCompany()
-  }
-
-    const findCompany = async () => {
-      const take = await getCompany(stock);
-      console.log('Stock aqui:', stock)
-      setData(take);
-      console.log('Take aqui:', take)
+    // findCompany();
+    // getAPI();
   }
 
   return (
