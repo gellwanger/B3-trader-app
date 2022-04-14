@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import {getStock, getCompany} from '../services/index';
+import { getStock } from '../services/index';
 
 function Home() {
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [list, setList] = useState(['teste']);
-  const array = ['token', 'data', 'stock']
+  const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result']
   const columns = Object.values(array);
 
   const handleStock = ({ target }) => {
@@ -17,28 +17,27 @@ function Home() {
   }
 
   const findCompany = async () => {
-    // const allCompanys = await getCompany();
     const company = await getStock(stock.stock);
     const specifyCompany = company[0].cd_acao;
+    const averageValue = company[0].vl_medio;
     const today = new Date();
     const token = Date.parse(today);
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
-    console.log(columns)
+    const number = (Math.random() * 100).toFixed(2);
+    const result = (averageValue - number).toFixed(2);
+
     const addItem = () => {
       const newList = {
-        token,
-        date: formatedDate,
-        stock: specifyCompany,
+        Token: token,
+        Date: formatedDate,
+        Stock: specifyCompany,
+        ValueStock: averageValue,
+        ValueTrade: number,
+        Result: result,
       }
       setList([...list, newList]);
     }
     addItem();
-  }
-  
-  
-  const createRandomNumber = () => {
-    const number = Math.round((Math.random() * 100));
-    return number;
   }
 
   const handleClick = async () => {
@@ -47,8 +46,8 @@ function Home() {
     } else if (quantity.trade < 1 || quantity.trade > 100) {
       return global.alert('Você deve especificar um número entre 1 e 100.');
     } else {
-      createRandomNumber();
       findCompany();
+      console.log('clicou')
     }
   }
 
@@ -110,9 +109,12 @@ function Home() {
         <tbody>
           {list.map((item, i) => (
             <tr key={ `row${i}` }>
-              <td className="table-light">{ item.token }</td>
-              <td className="table-light">{ item.date }</td>
-              <td className="table-light">{ item.stock }</td>
+              <td className="table-light">{ item.Token }</td>
+              <td className="table-light">{ item.Date }</td>
+              <td className="table-light">{ item.Stock }</td>
+              <td className="table-light">{ item.ValueStock }</td>
+              <td className="table-light">{ item.ValueTrade }</td>
+              <td className="table-light">{ item.Result }</td>
             </tr>
           ))}
         </tbody>
