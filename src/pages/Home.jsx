@@ -4,6 +4,7 @@ import {getStock, getCompany} from '../services/index';
 function Home() {
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
+  const [list, setList] = useState(['teste']);
   
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -17,25 +18,33 @@ function Home() {
     // const allCompanys = await getCompany();
     const company = await getStock(stock.stock);
     const specifyCompany = company[0].cd_acao;
-
-    console.log('specifyCompany', specifyCompany)
-    console.log('company: ', company[0])
-
-    const compareTickers = company.find((element) => element.cd_acao === specifyCompany).cd_acao;
-    return console.log('Deu certo: ', compareTickers);
+    const today = new Date();
+    const token = Date.parse(today);
+    const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
+    
+    const addItem = () => {
+      const newList = {
+        token,
+        date: formatedDate,
+        stock: specifyCompany,
+      }
+      setList([...list, newList]);
+    }
+    addItem();
   }
-
+  
+  
   const createRandomNumber = () => {
     const number = Math.round((Math.random() * 100));
-    console.log(number)
     return number;
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (stock.length === 0 || quantity.length === 0) {
-      return global.alert('Você precisa preencher os dados!')
-  }
-    else {
+      return global.alert('Você precisa preencher os dados!');
+    } else if (quantity.trade < 1 || quantity.trade > 100) {
+      return global.alert('Você deve especificar um número entre 1 e 100.');
+    } else {
       createRandomNumber();
       findCompany();
     }
