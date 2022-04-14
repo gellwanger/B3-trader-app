@@ -5,7 +5,7 @@ function Home() {
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [list, setList] = useState(['teste']);
-  const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result']
+  const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result', 'Balance']
   const columns = Object.values(array);
 
   const handleStock = ({ target }) => {
@@ -24,7 +24,7 @@ function Home() {
     const token = Date.parse(today);
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
     const number = (Math.random() * 100).toFixed(2);
-    const result = (averageValue - number).toFixed(2);
+    const result = Number((averageValue - number).toFixed(2));
 
     const addItem = () => {
       const newList = {
@@ -115,11 +115,11 @@ function Home() {
               <td className="table-light">{ item.ValueStock }</td>
               <td className="table-light">{ item.ValueTrade }</td>
               <td className="table-light">{ item.Result }</td>
+              <td className="table-light">{ item.Balance }</td>
             </tr>
           ))}
         </tbody>
       </table>
-
     </div>
     </>
   );

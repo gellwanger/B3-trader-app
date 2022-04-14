@@ -5,9 +5,7 @@ import Home from './pages/Home';
 class App extends Component {
   render() {
     return (
-      <div
-        className="principal"
-      >
+      <div>
         <Header />
         <Home />
       </div>
