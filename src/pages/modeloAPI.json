@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "cd_acao_rdz": "CSAN",
+    "nm_empresa": "COSAN",
+    "setor_economico": "PETRÓLEO, GÁS E BIOCOMBUSTÍVEIS",
+    "subsetor": "PETRÓLEO, GÁS E BIOCOMBUSTÍVEIS",
+    "segmento": "EXPLORAÇÃO, REFINO E DISTRIBUIÇÃO",
+    "segmento_b3": "NM",
+    "nm_segmento_b3": "",
+    "cd_acao": "CSAN3",
+    "tx_cnpj": "50.746.577/0001-15",
+    "vl_cnpj": "50746577000115",
+    "created_at": "2021-10-22T01:00:01.000000Z",
+    "updated_at": "2021-10-22T01:00:01.000000Z"
+  }
+]
