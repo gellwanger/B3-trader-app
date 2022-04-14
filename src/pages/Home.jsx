@@ -5,7 +5,9 @@ function Home() {
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [list, setList] = useState(['teste']);
-  
+  const array = ['token', 'data', 'stock']
+  const columns = Object.values(array);
+
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
   }
@@ -21,7 +23,7 @@ function Home() {
     const today = new Date();
     const token = Date.parse(today);
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
-    
+    console.log(columns)
     const addItem = () => {
       const newList = {
         token,
@@ -92,6 +94,31 @@ function Home() {
       >
         Trade
       </button>
+
+      <div className="container-lg mb">
+      <table className="table">
+        <thead>
+          <tr>
+            {list[0] && (
+              columns.map((item, i) => (
+              <th key={ `col${i}` } scope="col">
+                {item}
+              </th>
+            )))}
+          </tr>
+        </thead>
+        <tbody>
+          {list.map((item, i) => (
+            <tr key={ `row${i}` }>
+              <td className="table-light">{ item.token }</td>
+              <td className="table-light">{ item.date }</td>
+              <td className="table-light">{ item.stock }</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+    </div>
     </>
   );
 }
