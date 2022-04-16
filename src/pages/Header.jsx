@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Home extends Component {
-  render() {
-    return <h1>Header</h1>
-  }
+function Home() {
+  const getEmail = localStorage.getItem('user')
+  const email = JSON.parse(getEmail).email
+
+  return <h1>Olá {email}</h1>
 }
 
 export default Home;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getStock } from '../services/index';
+import Header from './Header';
 
 function Home() {
   const [stock, setStock] = useState([]);
@@ -47,12 +48,12 @@ function Home() {
       return global.alert('Você deve especificar um número entre 1 e 100.');
     } else {
       findCompany();
-      console.log('clicou')
     }
   }
 
   return (
     <>
+      <Header />
       <h1>Trader Plataform 1.0</h1>
       <form className="w-full max-w-sm">
         <div className="md:flex md:items-center mb-6">
