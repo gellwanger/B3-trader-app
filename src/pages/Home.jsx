@@ -59,7 +59,7 @@ function Home() {
       >
         Trader Plataform 1.0
       </h1>
-      <form className="w-full max-w-sm">
+      <form className="main-form w-full max-w-sm">
         <div className="md:flex md:items-center mb-6">
           <label
             className="block text-gray-900 font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -72,7 +72,7 @@ function Home() {
               onChange={ handleStock }
               placeholder="PETR4, VALE3, ALUP11, ..."
               type="text"
-              />
+            />
           </label>
         </div>
         <div>
@@ -80,7 +80,7 @@ function Home() {
             className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
             htmlFor="trade"
             >
-            Type quantity of stocks to trade:
+            Type quantity of stocks:
             <input
               name="trade"
               id="trade"
@@ -92,15 +92,15 @@ function Home() {
         </div>
       </form>
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+        className="btn-home bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
         type={ 'button' }
         onClick={ handleClick }
       >
         Trade
       </button>
 
-      <div className="container-lg mb">
-      <table className="table">
+      <div className="list container-lg mb">
+      <table>
         <thead>
           <tr>
             {list[0] && (

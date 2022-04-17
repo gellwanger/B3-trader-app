@@ -23,10 +23,30 @@
   margin-left: 42%;
 }
 
+.main-form {
+  margin-left: 18%;
+  margin-bottom: 5%;
+}
+
+.list {
+  margin-left: 5%;
+}
+
+.table-light {
+  background-color: rgb(211, 205, 205);
+  font-weight: lighter;
+  padding-left: 15px;
+}
+
+.btn-home {
+  margin-left: 43%;
+  margin-bottom: 12%;
+}
+
 .site_name {
   font-size: xx-large;
   font-weight: bolder;
-  margin-top: 20%;
+  margin-top: 10%;
   margin-left: 30%;
   margin-bottom: 5%;
 }
