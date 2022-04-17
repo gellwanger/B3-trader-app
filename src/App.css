@@ -28,6 +28,12 @@
   margin-bottom: 5%;
 }
 
+.header_messages{
+  display: flex;
+  margin: 0 70px;
+  justify-content: space-between;
+}
+
 .list {
   margin-left: 5%;
 }

@@ -3,7 +3,9 @@ import stock_image from '../stock_image.webp';
 
 function Home() {
   const getEmail = localStorage.getItem('user')
-  const email = JSON.parse(getEmail).email
+  const email = JSON.parse(getEmail).email;
+  const setBalance = localStorage.getItem('balance')
+  const balance = JSON.parse(setBalance).saldo;
 
   return (
     <>
@@ -12,11 +14,20 @@ function Home() {
         className='header_image'
         src={ stock_image }
       />
-      <h1
-        className='message'
+      <div
+        className='header_messages'
       >
-        Olá {email}!
-      </h1>
+        <h1
+          className='message'
+        >
+          Hi, {email}!
+        </h1>
+        <h1
+          className='message'
+        >
+          Your balance is: ${ balance }
+        </h1>
+      </div>
     </>
   );
 }

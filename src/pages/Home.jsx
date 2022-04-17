@@ -8,6 +8,8 @@ function Home() {
   const [list, setList] = useState(['teste']);
   const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result', 'Balance']
   const columns = Object.values(array);
+  const setBalance = localStorage.getItem('balance')
+  const balance = JSON.parse(setBalance).saldo;
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -21,11 +23,12 @@ function Home() {
     const company = await getStock(stock.stock);
     const specifyCompany = company[0].cd_acao;
     const averageValue = company[0].vl_medio;
+    const numberOfStocks = quantity.trade;
     const today = new Date();
     const token = Date.parse(today);
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
     const number = (Math.random() * 100).toFixed(2);
-    const result = Number((averageValue - number).toFixed(2));
+    const result = Number((averageValue - number) * numberOfStocks).toFixed(2);
 
     const addItem = () => {
       const newList = {
@@ -35,6 +38,7 @@ function Home() {
         ValueStock: averageValue,
         ValueTrade: number,
         Result: result,
+        Balance: balance,
       }
       setList([...list, newList]);
     }
