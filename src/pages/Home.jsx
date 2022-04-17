@@ -54,7 +54,11 @@ function Home() {
   return (
     <>
       <Header />
-      <h1>Trader Plataform 1.0</h1>
+      <h1
+        className='site_name'
+      >
+        Trader Plataform 1.0
+      </h1>
       <form className="w-full max-w-sm">
         <div className="md:flex md:items-center mb-6">
           <label

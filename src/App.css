@@ -7,6 +7,51 @@
   pointer-events: none;
 }
 
+.challenge {
+  font-size:xx-large;
+  margin-top: 15%;
+  margin-left: 25%;
+}
+
+.login_image{
+  margin-top: 10%;
+  margin-left: 29%;
+  border-radius: 20%;
+}
+
+.SmarttBot_image {
+  margin-left: 42%;
+}
+
+.site_name {
+  font-size: xx-large;
+  font-weight: bolder;
+  margin-top: 20%;
+  margin-left: 30%;
+  margin-bottom: 5%;
+}
+
+.message {
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.header_image {
+  min-width: 100%;
+  height: 100px;
+}
+
+.mainLogin {
+  margin-top: 5%;
+  margin-left: 40%;
+  margin-bottom: 10%;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

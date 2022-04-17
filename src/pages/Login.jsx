@@ -1,5 +1,7 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import login_image from '../login_image.jpg';
+import SmarttBot from '../SmarttBot.webp';
 
 class Login extends React.Component {
   constructor() {
@@ -41,55 +43,72 @@ class Login extends React.Component {
     const { buttonDisable, email, password, redirect } = this.state;
 
     return (
-      <div
-        className="mainLogin"
-      >
-        <form onSubmit={ this.onInputChange }>
-          <label
-            htmlFor="email"
-          >
-            E-mail:
-            <input
-              type="email"
-              id="email"
-              name="email"
-              onChange={ this.onInputChange }
-              placeholder="insira seu e-mail aqui"
-              value={ email }
-            />
-          </label>
-          <label
-            htmlFor="password"
-          >
-            Senha:
-            <input
-              type="password"
-              id="password"
-              name="password"
-              onChange={ this.onInputChange }
-              placeholder="insira sua senha aqui"
-              value={ password }
-            />
-          </label>
-        </form>
-        <button
-					className={
-						buttonDisable
-							? `bg-red-500 text-white font-bold py-2 px-4 border-b-4 
-						border-red-700 rounded cursor-not-allowed`
-							: `bg-green-500 hover:bg-green-400 text-white font-bold 
-						py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded
-						animate-pulse`
-					}
-          disabled={ buttonDisable }
-          type="button"
-          onClick={ this.handleClick }
+      <>
+        <h1 className='challenge'>Desafio Técnico Back-End Júnior</h1>
+        <img 
+          alt="SmarttBot" 
+          className='SmarttBot_image'
+          src={ SmarttBot } 
+          width="200" 
+        />
+        <img 
+          alt="login" 
+          className='login_image'
+          src={ login_image } 
+          width="400" 
+        />
+        <div
+          className="mainLogin"
         >
-          Entrar
-        </button>
-        { redirect && <Redirect to="/home" />}
-        <Link to="/home">Home</Link>
-      </div>
+          <form 
+            className='forms'
+            onSubmit={ this.onInputChange }
+          >
+            <label
+              htmlFor="email"
+            >
+              E-mail:
+              <input
+                type="email"
+                id="email"
+                name="email"
+                onChange={ this.onInputChange }
+                placeholder=" enter your email here"
+                value={ email }
+              />
+            </label>
+            <label
+              htmlFor="password"
+            >
+              Senha:
+              <input
+                type="password"
+                id="password"
+                name="password"
+                onChange={ this.onInputChange }
+                placeholder=" enter your password here"
+                value={ password }
+              />
+            </label>
+          </form>
+          <button
+            className={
+              buttonDisable
+                ? `bg-red-500 text-white font-bold py-2 px-4 border-b-4 
+              border-red-700 rounded cursor-not-allowed`
+                : `bg-green-500 hover:bg-green-400 text-white font-bold 
+              py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded
+              animate-pulse`
+            }
+            disabled={ buttonDisable }
+            type="button"
+            onClick={ this.handleClick }
+          >
+            Entrar
+          </button>
+          { redirect && <Redirect to="/home" />}
+        </div>
+      </>
     );
   }
 }
