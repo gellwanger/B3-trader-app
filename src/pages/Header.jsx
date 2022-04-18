@@ -23,6 +23,11 @@ function Home() {
         >
           Hi, {email}!
         </h1>
+        <h1
+          className='message'
+        >
+          Hi, {balance}!
+        </h1>
       </div>
     </>
   );

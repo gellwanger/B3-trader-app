@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getStock } from '../services/index';
 import Header from './Header';
 
@@ -8,7 +8,8 @@ function Home() {
   const [list, setList] = useState(['teste']);
   const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result']
   const columns = Object.values(array);
-  let balance = JSON.parse(localStorage.getItem('balance')).saldo;
+  const balance = JSON.parse(localStorage.getItem('balance')).saldo;
+  const [balance2, setBalance2] = useState(balance);
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -27,10 +28,11 @@ function Home() {
     const token = Date.parse(today);
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
     const number = (Math.random() * 100).toFixed(2);
-    const result = Number((averageValue - number) * numberOfStocks).toFixed(2);
+    const result = Number(((averageValue - number) * numberOfStocks).toFixed(2));
     console.log('result: ',result)
-    balance = (Number(JSON.parse(localStorage.getItem('balance')).saldo) + Number(result)).toFixed(2);
-    console.log('balance: ', balance)
+    // balance = (Number(JSON.parse(localStorage.getItem('balance')).saldo) + Number(result)).toFixed(2);
+    const maisUma = (Number(balance2) + result).toFixed(2);
+    setBalance2(maisUma);
 
     const addItem = () => {
       const newList = {
@@ -42,10 +44,14 @@ function Home() {
         Result: result,
       }
       setList([...list, newList]);
-      localStorage.setItem('balance', JSON.stringify({ saldo: balance }));
+      // localStorage.setItem('balance', JSON.stringify({ saldo: balance }));
     }
     addItem();
   }
+
+  useEffect(() => {
+    localStorage.setItem('balance', JSON.stringify({ saldo: balance2 }));
+  }, [balance2])
 
   const handleClick = async () => {
     if (stock.length === 0 || quantity.length === 0) {
@@ -131,13 +137,13 @@ function Home() {
           </tbody>
         </table>
       </div>
-      <div>
+      {/* <div>
         <h1
           className='message'
         >
-          Your balance is: ${ JSON.parse(localStorage.getItem('balance')).saldo }
+          Your balance is: ${ balance2 }
         </h1>
-      </div>
+      </div> */}
     </div>
     </>
   );
