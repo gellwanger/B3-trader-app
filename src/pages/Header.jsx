@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import stock_image from '../stock_image.webp';
 
 function Home() {
   const getEmail = localStorage.getItem('user')
   const email = JSON.parse(getEmail).email;
+
   const setBalance = localStorage.getItem('balance')
   const balance = JSON.parse(setBalance).saldo;
 
@@ -21,11 +22,6 @@ function Home() {
           className='message'
         >
           Hi, {email}!
-        </h1>
-        <h1
-          className='message'
-        >
-          Your balance is: ${ balance }
         </h1>
       </div>
     </>

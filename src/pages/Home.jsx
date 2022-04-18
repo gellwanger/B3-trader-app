@@ -6,10 +6,9 @@ function Home() {
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [list, setList] = useState(['teste']);
-  const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result', 'Balance']
+  const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result']
   const columns = Object.values(array);
-  const setBalance = localStorage.getItem('balance')
-  const balance = JSON.parse(setBalance).saldo;
+  let balance = JSON.parse(localStorage.getItem('balance')).saldo;
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -29,6 +28,9 @@ function Home() {
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
     const number = (Math.random() * 100).toFixed(2);
     const result = Number((averageValue - number) * numberOfStocks).toFixed(2);
+    console.log('result: ',result)
+    balance = (Number(JSON.parse(localStorage.getItem('balance')).saldo) + Number(result)).toFixed(2);
+    console.log('balance: ', balance)
 
     const addItem = () => {
       const newList = {
@@ -38,9 +40,9 @@ function Home() {
         ValueStock: averageValue,
         ValueTrade: number,
         Result: result,
-        Balance: balance,
       }
       setList([...list, newList]);
+      localStorage.setItem('balance', JSON.stringify({ saldo: balance }));
     }
     addItem();
   }
@@ -102,33 +104,40 @@ function Home() {
       >
         Trade
       </button>
-
-      <div className="list container-lg mb">
-      <table>
-        <thead>
-          <tr>
-            {list[0] && (
-              columns.map((item, i) => (
-              <th key={ `col${i}` } scope="col">
-                {item}
-              </th>
-            )))}
-          </tr>
-        </thead>
-        <tbody>
-          {list.map((item, i) => (
-            <tr key={ `row${i}` }>
-              <td className="table-light">{ item.Token }</td>
-              <td className="table-light">{ item.Date }</td>
-              <td className="table-light">{ item.Stock }</td>
-              <td className="table-light">{ item.ValueStock }</td>
-              <td className="table-light">{ item.ValueTrade }</td>
-              <td className="table-light">{ item.Result }</td>
-              <td className="table-light">{ item.Balance }</td>
+      <div className='header_messages'>
+        <div className="list container-lg mb">
+        <table>
+          <thead>
+            <tr>
+              {list[0] && (
+                columns.map((item, i) => (
+                <th key={ `col${i}` } scope="col">
+                  {item}
+                </th>
+              )))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {list.map((item, i) => (
+              <tr key={ `row${i}` }>
+                <td className="table-light">{ item.Token }</td>
+                <td className="table-light">{ item.Date }</td>
+                <td className="table-light">{ item.Stock }</td>
+                <td className="table-light">{ item.ValueStock }</td>
+                <td className="table-light">{ item.ValueTrade }</td>
+                <td className="table-light">{ item.Result }</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h1
+          className='message'
+        >
+          Your balance is: ${ JSON.parse(localStorage.getItem('balance')).saldo }
+        </h1>
+      </div>
     </div>
     </>
   );
