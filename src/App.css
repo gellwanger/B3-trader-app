@@ -7,9 +7,35 @@
   pointer-events: none;
 }
 
+.btn-home {
+  margin-left: 53%;
+  margin-bottom: 12%;
+}
+
 .challenge {
   font-size:xx-large;
   margin-top: 15%;
+  margin-left: 25%;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+}
+
+.header_image {
+  min-width: 100%;
+  height: 100px;
+}
+
+.header_messages{
+  display: flex;
+  margin: 0 90px;
+  justify-content: space-between;
+}
+
+.list {
+  margin-top: -10%;
   margin-left: 25%;
 }
 
@@ -19,52 +45,9 @@
   border-radius: 20%;
 }
 
-.SmarttBot_image {
-  margin-left: 42%;
-}
-
 .main-form {
-  margin-left: 18%;
+  margin-left: 28%;
   margin-bottom: 5%;
-}
-
-.header_messages{
-  display: flex;
-  margin: 0 70px;
-  justify-content: space-between;
-}
-
-.list {
-  margin-left: 5%;
-}
-
-.table-light {
-  background-color: rgb(211, 205, 205);
-  font-weight: lighter;
-  padding-left: 15px;
-}
-
-.btn-home {
-  margin-left: 43%;
-  margin-bottom: 12%;
-}
-
-.site_name {
-  font-size: xx-large;
-  font-weight: bolder;
-  margin-top: 10%;
-  margin-left: 30%;
-  margin-bottom: 5%;
-}
-
-.message {
-  font-size: x-large;
-  font-weight: bolder;
-}
-
-.header_image {
-  min-width: 100%;
-  height: 100px;
 }
 
 .mainLogin {
@@ -73,37 +56,24 @@
   margin-bottom: 10%;
 }
 
-.forms {
-  display: flex;
-  flex-direction: column;
+.message {
+  font-size: x-large;
+  font-weight: bolder;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.SmarttBot_image {
+  margin-left: 42%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.site_name {
+  font-size: xx-large;
+  font-weight: bolder;
+  margin-left: 40%;
+  margin-bottom: 5%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.table-light {
+  background-color: rgb(211, 205, 205);
+  font-weight: lighter;
+  padding-left: 15px;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import stock_image from '../stock_image.webp';
 
 function Home() {

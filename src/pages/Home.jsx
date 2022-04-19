@@ -30,7 +30,6 @@ function Home() {
     const number = (Math.random() * 100).toFixed(2);
     const result = Number(((averageValue - number) * numberOfStocks).toFixed(2));
     console.log('result: ',result)
-    // balance = (Number(JSON.parse(localStorage.getItem('balance')).saldo) + Number(result)).toFixed(2);
     const maisUma = (Number(balance2) + result).toFixed(2);
     setBalance2(maisUma);
 
@@ -44,7 +43,6 @@ function Home() {
         Result: result,
       }
       setList([...list, newList]);
-      // localStorage.setItem('balance', JSON.stringify({ saldo: balance }));
     }
     addItem();
   }
@@ -74,7 +72,7 @@ function Home() {
       <form className="main-form w-full max-w-sm">
         <div className="md:flex md:items-center mb-6">
           <label
-            className="block text-gray-900 font-bold md:text-right mb-1 md:mb-0 pr-4"
+            className=" block text-gray-900 font-bold md:text-right mb-1 md:mb-0 pr-4"
             htmlFor="stock"
             >
             Choose Stock to trade:
@@ -110,7 +108,7 @@ function Home() {
       >
         Trade
       </button>
-      <div className='header_messages'>
+      <div>
         <div className="list container-lg mb">
         <table>
           <thead>
@@ -137,13 +135,6 @@ function Home() {
           </tbody>
         </table>
       </div>
-      {/* <div>
-        <h1
-          className='message'
-        >
-          Your balance is: ${ balance2 }
-        </h1>
-      </div> */}
     </div>
     </>
   );
