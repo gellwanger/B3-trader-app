@@ -37,8 +37,7 @@ class Login extends React.Component {
 		const { email } = this.state;
    
     localStorage.setItem('user', JSON.stringify({ email }));
-    localStorage.setItem('balance', JSON.stringify({ saldo: 500 }));
-   
+
     this.setState({ redirect: true });
   }
 

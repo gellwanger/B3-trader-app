@@ -1,10 +1,13 @@
 import React from 'react';
 import Routes from './components/Routes';
 import './App.css';
+import ChallengeProvider from './context/ChallengeProvider';
 
 function App() {
   return (
-    <Routes />
+    <ChallengeProvider>
+      <Routes />
+    </ChallengeProvider>  
   );
 }
 

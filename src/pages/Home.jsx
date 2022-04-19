@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { getStock } from '../services/index';
 import Header from './Header';
+import ChallengeContext from '../context/ChallengeContext';
 
 function Home() {
   const [stock, setStock] = useState([]);
@@ -8,8 +9,7 @@ function Home() {
   const [list, setList] = useState(['teste']);
   const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result']
   const columns = Object.values(array);
-  const balance = JSON.parse(localStorage.getItem('balance')).saldo;
-  const [balance2, setBalance2] = useState(balance);
+  const { setNewBalance, newBalance } = useContext(ChallengeContext);
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -29,9 +29,8 @@ function Home() {
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
     const number = (Math.random() * 100).toFixed(2);
     const result = Number(((averageValue - number) * numberOfStocks).toFixed(2));
-    console.log('result: ',result)
-    const maisUma = (Number(balance2) + result).toFixed(2);
-    setBalance2(maisUma);
+    const balanceResult = (Number(newBalance) + result).toFixed(2);
+    setNewBalance(balanceResult);
 
     const addItem = () => {
       const newList = {
@@ -48,8 +47,8 @@ function Home() {
   }
 
   useEffect(() => {
-    localStorage.setItem('balance', JSON.stringify({ saldo: balance2 }));
-  }, [balance2])
+    localStorage.setItem('balance', JSON.stringify({ saldo: newBalance }));
+  }, [newBalance])
 
   const handleClick = async () => {
     if (stock.length === 0 || quantity.length === 0) {

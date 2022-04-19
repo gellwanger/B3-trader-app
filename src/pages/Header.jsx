@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import stock_image from '../stock_image.webp';
+import ChallengeContext from '../context/ChallengeContext';
 
 function Home() {
   const getEmail = localStorage.getItem('user')
   const email = JSON.parse(getEmail).email;
 
-  const setBalance = localStorage.getItem('balance')
-  const balance = JSON.parse(setBalance).saldo;
+  const { newBalance } = useContext(ChallengeContext);
+
+  // const setBalance = localStorage.getItem('balance')
+  // const balance = JSON.parse(setBalance).saldo;
 
   return (
     <>
@@ -26,7 +29,7 @@ function Home() {
         <h1
           className='message'
         >
-          Hi, {balance}!
+          Your balance is: ${newBalance}
         </h1>
       </div>
     </>
