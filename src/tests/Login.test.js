@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Login from '../../pages/Login';
+import Login from '../pages/Login';
 
 describe('Testa se todos os elementos pré-definidos estão renderizados na tela inicial', () => {
   beforeEach(() => {
