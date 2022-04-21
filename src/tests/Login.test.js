@@ -17,12 +17,12 @@ describe('Testa se todos os elementos pré-definidos estão renderizados na tela
     expect(password).toBeInTheDocument();
   });
 
-  test("Verifica se tem o texto 'enter your email here' na tela inicial", () => {  
+  test("Verifica se tem o placeholder 'enter your email here' na tela inicial", () => {  
     const emailPlaceholder = screen.getByPlaceholderText('enter your email here');
     expect(emailPlaceholder).toBeInTheDocument();
   });
 
-  test("Verifica se tem o texto 'enter your password here' na tela inicial", () => {  
+  test("Verifica se tem o placeholder 'enter your password here' na tela inicial", () => {  
     const passwordPlaceholder = screen.getByPlaceholderText('enter your password here');
     expect(passwordPlaceholder).toBeInTheDocument();
   });

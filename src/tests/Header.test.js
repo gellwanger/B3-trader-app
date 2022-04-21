@@ -21,9 +21,4 @@ describe('Testa se todos os elementos pré-definidos estão renderizados na tela
     const balance = screen.getByText('Your balance is: $500');
     expect(balance).toBeInTheDocument();
   });
-
-  test('Verifica se tem o botão de trade na tela principal', () => {  
-    const button = screen.getAllByRole('button')
-    expect(button).toHaveLength(1);
-  });
 });
