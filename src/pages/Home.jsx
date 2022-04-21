@@ -28,7 +28,7 @@ function Home() {
     const token = Date.parse(today);
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
     const number = (Math.random() * 100).toFixed(2);
-    const result = Number(((averageValue - number) * numberOfStocks).toFixed(2));
+    const result = Number(((number - averageValue) * numberOfStocks).toFixed(2));
     const balanceResult = (Number(newBalance) + result).toFixed(2);
     setNewBalance(balanceResult);
 
@@ -55,6 +55,8 @@ function Home() {
       return global.alert('Você precisa preencher os dados!');
     } else if (quantity.trade < 1 || quantity.trade > 100) {
       return global.alert('Você deve especificar um número entre 1 e 100.');
+    } else if (newBalance < 0) {
+      return global.alert('Você não tem mais saldo disponível.');
     } else {
       findCompany();
     }
