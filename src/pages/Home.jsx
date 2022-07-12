@@ -1,15 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { getStock } from '../services/index';
-import Header from './Header';
 import ChallengeContext from '../context/ChallengeContext';
 
 function Home() {
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
-  const [list, setList] = useState(['teste']);
+  const [list, setList] = useState([]);
   const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result']
   const columns = Object.values(array);
   const { setNewBalance, newBalance } = useContext(ChallengeContext);
+  let a = 0;
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -23,7 +23,9 @@ function Home() {
     const company = await getStock(stock.stock);
     const specifyCompany = company[0].cd_acao;
     const averageValue = company[0].vl_medio;
-    const numberOfStocks = quantity.trade;
+
+    const numberOfStocks = 100;
+    
     const today = new Date();
     const token = Date.parse(today);
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
@@ -50,7 +52,16 @@ function Home() {
     localStorage.setItem('balance', JSON.stringify({ saldo: newBalance }));
   }, [newBalance])
 
+  const addStocks = () => {
+    findCompany();
+    a += 1;
+    console.log(a);
+    // return teste
+  };
+
   const handleClick = async () => {
+    const numberOfTrades = quantity.trade;
+
     if (stock.length === 0 || quantity.length === 0) {
       return global.alert('Você precisa preencher os dados!');
     } else if (quantity.trade < 1 || quantity.trade > 100) {
@@ -58,13 +69,14 @@ function Home() {
     } else if (newBalance < 0) {
       return global.alert('Você não tem mais saldo disponível.');
     } else {
-      findCompany();
+      while(a < numberOfTrades) {
+        addStocks();
+      }
     }
   }
 
   return (
     <>
-      <Header />
       <h1
         className='site_name'
       >

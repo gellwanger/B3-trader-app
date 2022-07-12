@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import login_image from '../login_image.jpg';
 import SmarttBot from '../SmarttBot.webp';
+import Copyright from '../components/Copyrigth';
 
 class Login extends React.Component {
   constructor() {
@@ -9,8 +10,8 @@ class Login extends React.Component {
 
     this.state = {
       buttonDisable: true,
-      email: '',
-      password: '',
+      email: 'gustavo@teste.com',
+      password: 123456,
       redirect: false,
     };
   }
@@ -110,6 +111,7 @@ class Login extends React.Component {
           </button>
           { redirect && <Redirect to="/home" />}
         </div>
+        <Copyright />
       </>
     );
   }
