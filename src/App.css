@@ -13,6 +13,13 @@
   margin-left: 33%;
 }
 
+.new_user {
+  font-size:xx-large;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  margin-left: 40%;
+}
+
 .forms {
   display: flex;
   flex-direction: column;
@@ -39,6 +46,11 @@
   margin-top: 2%;
   margin-left: 34%;
   border-radius: 20%;
+}
+
+.new_user_icon{
+  margin-left: 45%;
+  width: 100px;
 }
 
 .main-form {

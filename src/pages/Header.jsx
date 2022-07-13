@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import stock_image from '../stock_image.webp';
+import stock_image from '../images/stock_image.webp';
 import ChallengeContext from '../context/ChallengeContext';
 
 function Home() {

@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import login_image from '../images/login_image.jpg';
+import { Redirect } from 'react-router-dom';
+import userIcon from '../images/userIcon.png';
 import Copyright from '../components/Copyrigth';
 
-class Login extends React.Component {
+class CreateNewAccount extends React.Component {
   constructor() {
     super();
 
     this.state = {
       buttonDisable: true,
-      email: 'gustavo@teste.com',
+      email: 'gustavo@gustavo.com',
       password: 123456,
       redirect: false,
     };
@@ -46,11 +46,11 @@ class Login extends React.Component {
 
     return (
       <>
-        <h1 className='challenge'>B3 Trader App</h1>
+        <h1 className='new_user'>Create New User</h1>
         <img 
           alt="login" 
-          className='login_image'
-          src={ login_image } 
+          className='new_user_icon'
+          src={ userIcon } 
           width="400" 
         />
         <div
@@ -88,6 +88,20 @@ class Login extends React.Component {
                 value={ password }
               />
             </label>
+            <label
+              htmlFor="password"
+            >
+              Confirm password:
+              {' '}
+              <input
+                type="password"
+                id="password"
+                name="password"
+                onChange={ this.onInputChange }
+                placeholder=" enter your password here"
+                value={ password }
+              />
+            </label>
           </form>
           <button
             className={
@@ -102,15 +116,9 @@ class Login extends React.Component {
             type="button"
             onClick={ this.handleClick }
           >
-            Entrar
+            Create
           </button>
-          { redirect && <Redirect to="/home" />}
-          <Link to={ "/create-new-account" }
-          >
-            New Here? Create new Account
-          </Link>
-        </div>
-        <div>
+          { redirect && <Redirect to="/main" />}
         </div>
         <Copyright />
       </>
@@ -118,4 +126,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default CreateNewAccount;
