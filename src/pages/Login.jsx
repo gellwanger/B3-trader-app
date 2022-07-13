@@ -104,7 +104,7 @@ class Login extends React.Component {
           >
             Entrar
           </button>
-          { redirect && <Redirect to="/home" />}
+          { redirect && <Redirect to="/main" />}
           <Link to={ "/create-new-account" }
           >
             New Here? Create new Account

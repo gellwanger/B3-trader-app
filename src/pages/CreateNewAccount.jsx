@@ -9,8 +9,9 @@ class CreateNewAccount extends React.Component {
 
     this.state = {
       buttonDisable: true,
-      email: 'gustavo@gustavo.com',
-      password: 123456,
+      email: '',
+      password: '',
+      confirmedPassword: '',
       redirect: false,
     };
   }
@@ -21,13 +22,14 @@ class CreateNewAccount extends React.Component {
   }
 
   enableButton = () => {
-    const { email, password } = this.state;
+    const { email, password, confirmedPassword } = this.state;
     const minimumLength = 6;
     const minimumLengthPassword = 6;
 
     if (email.length >= minimumLength && email.includes('@')
     && email.includes('.com')
-    && password.length >= minimumLengthPassword) this.setState({ buttonDisable: false });
+    && password.length >= minimumLengthPassword
+    && password === confirmedPassword) this.setState({ buttonDisable: false });
     else {
       this.setState({ buttonDisable: true });
     }
@@ -42,7 +44,7 @@ class CreateNewAccount extends React.Component {
   }
 
   render() {
-    const { buttonDisable, email, password, redirect } = this.state;
+    const { buttonDisable, redirect } = this.state;
 
     return (
       <>
@@ -71,7 +73,6 @@ class CreateNewAccount extends React.Component {
                 name="email"
                 onChange={ this.onInputChange }
                 placeholder=" enter your email here"
-                value={ email }
               />
             </label>
             <label
@@ -85,21 +86,19 @@ class CreateNewAccount extends React.Component {
                 name="password"
                 onChange={ this.onInputChange }
                 placeholder=" enter your password here"
-                value={ password }
               />
             </label>
             <label
-              htmlFor="password"
+              htmlFor="confirmedPassword"
             >
               Confirm password:
               {' '}
               <input
                 type="password"
-                id="password"
-                name="password"
+                id="confirmedPassword"
+                name="confirmedPassword"
                 onChange={ this.onInputChange }
-                placeholder=" enter your password here"
-                value={ password }
+                placeholder="confirm your password"
               />
             </label>
           </form>

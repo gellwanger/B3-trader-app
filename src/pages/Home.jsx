@@ -9,7 +9,7 @@ function Home() {
   const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result']
   const columns = Object.values(array);
   const { setNewBalance, newBalance } = useContext(ChallengeContext);
-  let a = 0;
+  let ZERO = 0;
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -54,9 +54,8 @@ function Home() {
 
   const addStocks = () => {
     findCompany();
-    a += 1;
-    console.log(a);
-    // return teste
+    ZERO += 1;
+    console.log(ZERO);
   };
 
   const handleClick = async () => {
@@ -69,7 +68,7 @@ function Home() {
     } else if (newBalance < 0) {
       return global.alert('Você não tem mais saldo disponível.');
     } else {
-      while(a < numberOfTrades) {
+      while(ZERO < numberOfTrades) {
         addStocks();
       }
     }
