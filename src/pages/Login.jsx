@@ -105,11 +105,13 @@ class Login extends React.Component {
             Entrar
           </button>
           { redirect && <Redirect to="/main" />}
-          <Link to={ "/create-new-account" }
+        </div>
+          <Link 
+            to={ "/create-new-account" }
+            className='createLink'
           >
             New Here? Create new Account
           </Link>
-        </div>
         <div>
         </div>
         <Copyright />

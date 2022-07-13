@@ -10,14 +10,12 @@
 .challenge {
   font-size:xx-large;
   margin-top: 2%;
-  margin-left: 33%;
+  margin-left: 40%;
 }
 
-.new_user {
-  font-size:xx-large;
-  margin-top: 2%;
-  margin-bottom: 5%;
-  margin-left: 40%;
+.createLink {
+  color: blue;
+  margin-left: 35%;
 }
 
 .forms {
@@ -48,6 +46,13 @@
   border-radius: 20%;
 }
 
+.new_user {
+  font-size:xx-large;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  margin-left: 40%;
+}
+
 .new_user_icon{
   margin-left: 45%;
   width: 100px;
@@ -67,10 +72,6 @@
 .message {
   font-size: x-large;
   font-weight: bolder;
-}
-
-.SmarttBot_image {
-  margin-left: 42%;
 }
 
 .site_name {

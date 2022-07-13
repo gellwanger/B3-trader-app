@@ -45,7 +45,7 @@ function Home() {
       }
       setList([...list, newList]);
     }
-    addItem();
+    return addItem();
   }
 
   useEffect(() => {
