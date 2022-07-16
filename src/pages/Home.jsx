@@ -9,7 +9,6 @@ function Home() {
   const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result']
   const columns = Object.values(array);
   const { setNewBalance, newBalance } = useContext(ChallengeContext);
-  let ZERO = 0;
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -24,13 +23,17 @@ function Home() {
     const specifyCompany = company[0].cd_acao;
     const averageValue = company[0].vl_medio;
 
-    const numberOfStocks = 100;
+    const minRandom = averageValue * 0.8;
+    const maxRandom = averageValue * 1.2;
+    const randomTradeNumber = Math.random() * (maxRandom - minRandom) + minRandom;
+
+    const numberOfStocks = +quantity.trade;
     
     const today = new Date();
     const token = Date.parse(today);
     const formatedDate = ((today.getDate() )) + "/" + ((today.getMonth() + 1)) + "/" + today.getFullYear(); 
-    const number = (Math.random() * 100).toFixed(2);
-    const result = Number(((number - averageValue) * numberOfStocks).toFixed(2));
+    const tradeValue = (randomTradeNumber).toFixed(2);
+    const result = Number(((tradeValue - averageValue) * numberOfStocks).toFixed(2));
     const balanceResult = (Number(newBalance) + result).toFixed(2);
     setNewBalance(balanceResult);
 
@@ -40,7 +43,7 @@ function Home() {
         Date: formatedDate,
         Stock: specifyCompany,
         ValueStock: averageValue,
-        ValueTrade: number,
+        ValueTrade: tradeValue,
         Result: result,
       }
       setList([...list, newList]);
@@ -52,15 +55,7 @@ function Home() {
     localStorage.setItem('balance', JSON.stringify({ saldo: newBalance }));
   }, [newBalance])
 
-  const addStocks = () => {
-    findCompany();
-    ZERO += 1;
-    console.log(ZERO);
-  };
-
   const handleClick = async () => {
-    const numberOfTrades = quantity.trade;
-
     if (stock.length === 0 || quantity.length === 0) {
       return global.alert('Você precisa preencher os dados!');
     } else if (quantity.trade < 1 || quantity.trade > 100) {
@@ -68,9 +63,7 @@ function Home() {
     } else if (newBalance < 0) {
       return global.alert('Você não tem mais saldo disponível.');
     } else {
-      while(ZERO < numberOfTrades) {
-        addStocks();
-      }
+      findCompany();
     }
   }
 
@@ -79,7 +72,7 @@ function Home() {
       <h1
         className='site_name'
       >
-        Trader Plataform 1.0
+        Trader Plataform 1.2
       </h1>
       <form className="main-form w-full max-w-sm">
         <div className="md:flex md:items-center mb-6">

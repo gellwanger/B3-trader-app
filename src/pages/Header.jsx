@@ -4,12 +4,12 @@ import ChallengeContext from '../context/ChallengeContext';
 
 function Home() {
   const getEmail = localStorage.getItem('user')
-  const email = JSON.parse(getEmail).email;
-
+  const email = JSON.parse(getEmail).email;  
+  const domain = email.substring(email.indexOf('@'));
+  const final = email.length - domain.length;
+  const name = email.substring(0, 1).toUpperCase() + email.substring(1, +final);
+  
   const { newBalance } = useContext(ChallengeContext);
-
-  // const setBalance = localStorage.getItem('balance')
-  // const balance = JSON.parse(setBalance).saldo;
 
   return (
     <>
@@ -24,7 +24,7 @@ function Home() {
         <h1
           className='message'
         >
-          Hi, {email}!
+          Hi, {name}!
         </h1>
         <h1
           className='message'
