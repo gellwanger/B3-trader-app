@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import userIcon from '../images/userIcon.png';
 import Copyright from '../components/Copyrigth';
 
@@ -12,7 +11,6 @@ class CreateNewAccount extends React.Component {
       email: '',
       password: '',
       confirmedPassword: '',
-      redirect: false,
     };
   }
 
@@ -40,11 +38,11 @@ class CreateNewAccount extends React.Component {
    
     localStorage.setItem('user', JSON.stringify({ email }));
 
-    this.setState({ redirect: true });
+    window.location.href='http://localhost:3000/main'
   }
 
   render() {
-    const { buttonDisable, redirect } = this.state;
+    const { buttonDisable } = this.state;
 
     return (
       <>
@@ -72,7 +70,7 @@ class CreateNewAccount extends React.Component {
                 id="email"
                 name="email"
                 onChange={ this.onInputChange }
-                placeholder=" enter your email here"
+                placeholder="enter your email here"
               />
             </label>
             <label
@@ -85,7 +83,7 @@ class CreateNewAccount extends React.Component {
                 id="password"
                 name="password"
                 onChange={ this.onInputChange }
-                placeholder=" enter your password here"
+                placeholder="enter your password here"
               />
             </label>
             <label
@@ -117,7 +115,6 @@ class CreateNewAccount extends React.Component {
           >
             Create
           </button>
-          { redirect && <Redirect to="/main" />}
         </div>
         <Copyright />
       </>

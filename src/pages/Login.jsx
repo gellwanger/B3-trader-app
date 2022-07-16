@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import login_image from '../images/login_image.jpg';
 import Copyright from '../components/Copyrigth';
 
@@ -9,9 +8,8 @@ class Login extends React.Component {
 
     this.state = {
       buttonDisable: true,
-      email: 'gustavo@teste.com',
-      password: 123456,
-      redirect: false,
+      email: '',
+      password: '',
     };
   }
 
@@ -26,6 +24,7 @@ class Login extends React.Component {
     const minimumLengthPassword = 6;
 
     if (email.length >= minimumLength && email.includes('@')
+    && email.includes('mail')
     && email.includes('.com')
     && password.length >= minimumLengthPassword) this.setState({ buttonDisable: false });
     else {
@@ -38,11 +37,11 @@ class Login extends React.Component {
    
     localStorage.setItem('user', JSON.stringify({ email }));
 
-    this.setState({ redirect: true });
+    window.location.href='http://localhost:3000/main'
   }
 
   render() {
-    const { buttonDisable, email, password, redirect } = this.state;
+    const { buttonDisable, email, password } = this.state;
 
     return (
       <>
@@ -104,14 +103,14 @@ class Login extends React.Component {
           >
             Entrar
           </button>
-          { redirect && <Redirect to="/main" />}
         </div>
-          <Link 
-            to={ "/create-new-account" }
-            className='createLink'
+          <a
+            className="createLink"
+            href="/create-new-account"
+            data-testid="newUser"
           >
             New Here? Create new Account
-          </Link>
+          </a>
         <div>
         </div>
         <Copyright />
