@@ -1,7 +1,7 @@
 import React from "react";
 import Copyright from "../components/Copyrigth";
 import Header from './Header';
-import Home from "./Home";
+import Home from './Home';
 
 function Main() {
   return(

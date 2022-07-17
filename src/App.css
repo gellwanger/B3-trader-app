@@ -3,7 +3,6 @@
 }
 
 .btn-home {
-  margin-left: 43%;
   margin-bottom: 12%;
 }
 
@@ -60,7 +59,11 @@
 
 .main-form {
   margin-left: 28%;
-  margin-bottom: 5%;
+  margin-bottom: 15px;
+}
+
+.mainHome {
+  text-align: center;
 }
 
 .mainLogin {
@@ -74,15 +77,27 @@
   font-weight: bolder;
 }
 
+.site-footer {
+  position: relative;
+  left:0;
+  right:0;
+  bottom: 0;
+  padding-top: 10px;
+}
+
 .site_name {
   font-size: xx-large;
   font-weight: bolder;
-  margin-left: 35%;
-  margin-bottom: 5%;
+  margin-bottom: 30px;
 }
 
 .table-light {
   background-color: rgb(211, 205, 205);
   font-weight: lighter;
   padding-left: 15px;
+}
+
+.loading {
+  margin-top: 10%;
+  text-align: center;
 }

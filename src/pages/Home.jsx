@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Loading from '../components/Loading';
 import { getStock } from '../services/index';
 import ChallengeContext from '../context/ChallengeContext';
 
@@ -6,6 +7,8 @@ function Home() {
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const array = ['Token', 'Data', 'Stock', 'ValueStock', 'ValueTrade', 'Result']
   const columns = Object.values(array);
   const { setNewBalance, newBalance } = useContext(ChallengeContext);
@@ -48,6 +51,7 @@ function Home() {
       }
       setList([...list, newList]);
     }
+    setLoading(false);
     return addItem();
   }
 
@@ -56,91 +60,102 @@ function Home() {
   }, [newBalance])
 
   const handleClick = async () => {
-    if (stock.length === 0 || quantity.length === 0) {
+    if (stock.stock === undefined || quantity.trade === undefined) {
       return global.alert('Você precisa preencher os dados!');
+    } else if (stock.stock.length <= 4 || stock.stock.length > 6) {
+      return global.alert('Ticket inexistente. Verifique o código e tente novamente.')
     } else if (quantity.trade < 1 || quantity.trade > 100) {
       return global.alert('Você deve especificar um número entre 1 e 100.');
     } else if (newBalance < 0) {
       return global.alert('Você não tem mais saldo disponível.');
     } else {
-      findCompany();
+      setLoading(true);
+      return findCompany();
     }
   }
 
   return (
     <>
-      <h1
-        className='site_name'
-      >
-        Trader Plataform 1.2
-      </h1>
-      <form className="main-form w-full max-w-sm">
-        <div className="md:flex md:items-center mb-6">
-          <label
-            className=" block text-gray-900 font-bold md:text-right mb-1 md:mb-0 pr-4"
-            htmlFor="stock"
-            >
-            Choose Stock to trade:
-            <input
-              name="stock"
-              id="stock"
-              onChange={ handleStock }
-              placeholder="PETR4, VALE3, ALUP11, ..."
-              type="text"
-            />
-          </label>
-        </div>
-        <div>
-          <label
-            className="block text-gray-900 font-bold md:text-right mb-1 md:mb-0 pr-4"
-            htmlFor="trade"
-            >
-            Type quantity of stocks:
-            <input
-              name="trade"
-              id="trade"
-              onChange={ handleQuantity }
-              placeholder="min: 1, max: 100"
-              type="number"
+     {loading ? (
+      <Loading />
+      ) : (
+      <div className='mainHome'>
+        <h1
+          className='site_name'
+        >
+          Trader Plataform 1.2
+        </h1>
+        <form 
+          className="main-form w-full max-w-sm"
+        >
+          <div className="md:flex md:items-center mb-6">
+            <label
+              className=" block text-gray-900 font-bold md:text-right mb-1 md:mb-0 pr-4"
+              htmlFor="stock"
+              >
+              Choose Stock to trade:
+              <input
+                name="stock"
+                id="stock"
+                onChange={ handleStock }
+                placeholder="PETR4, VALE3, ALUP11, ..."
+                type="text"
               />
-          </label>
+            </label>
+          </div>
+          <div>
+            <label
+              className="block text-gray-900 font-bold md:text-right mb-1 md:mb-0 pr-4"
+              htmlFor="trade"
+              >
+              Type quantity of stocks:
+              <input
+                name="trade"
+                id="trade"
+                onChange={ handleQuantity }
+                placeholder="min: 1, max: 100"
+                type="number"
+                />
+            </label>
+          </div>
+        </form>
+        <button
+          className="btn-home bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          type={ 'button' }
+          onClick={ handleClick }
+        >
+          Trade
+        </button>
+        <div>
+          <div className="list container-lg mb">
+            <table>
+              <thead>
+                <tr>
+                  {list[0] && (
+                    columns.map((item, i) => (
+                    <th key={ `col${i}` } scope="col">
+                      {item}
+                    </th>
+                  )))}
+                </tr>
+              </thead>
+              <tbody>
+                {list.map((item, i) => (
+                  <tr key={ `row${i}` }>
+                    <td className="table-light">{ item.Token }</td>
+                    <td className="table-light">{ item.Date }</td>
+                    <td className="table-light">{ item.Stock }</td>
+                    <td className="table-light">{ item.ValueStock }</td>
+                    <td className="table-light">{ item.ValueTrade }</td>
+                    <td className="table-light">{ item.Result }</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </form>
-      <button
-        className="btn-home bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-        type={ 'button' }
-        onClick={ handleClick }
-      >
-        Trade
-      </button>
-      <div>
-        <div className="list container-lg mb">
-        <table>
-          <thead>
-            <tr>
-              {list[0] && (
-                columns.map((item, i) => (
-                <th key={ `col${i}` } scope="col">
-                  {item}
-                </th>
-              )))}
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((item, i) => (
-              <tr key={ `row${i}` }>
-                <td className="table-light">{ item.Token }</td>
-                <td className="table-light">{ item.Date }</td>
-                <td className="table-light">{ item.Stock }</td>
-                <td className="table-light">{ item.ValueStock }</td>
-                <td className="table-light">{ item.ValueTrade }</td>
-                <td className="table-light">{ item.Result }</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
-    </div>
+    )}
     </>
   );
 }
