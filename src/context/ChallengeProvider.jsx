@@ -8,16 +8,16 @@ function ChallengeProvider({ children }) {
     localStorage.setItem('balance', JSON.stringify({ saldo: newBalance }));
   }, [newBalance])
 
- const contextValue = {
-   newBalance,
-   setNewBalance,
- };
+  const contextValue = {
+    newBalance,
+    setNewBalance,
+  };
 
- return (
-   <ChallengeContext.Provider value={ contextValue }>
-     {children}
-   </ChallengeContext.Provider>
- );
+  return (
+  <ChallengeContext.Provider value={ contextValue }>
+  {children}
+  </ChallengeContext.Provider>
+  );
 }
 
 export default ChallengeProvider;

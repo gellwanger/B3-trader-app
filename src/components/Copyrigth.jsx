@@ -6,7 +6,7 @@ function Copyright() {
       variant="body2" 
       color="text.secondary" 
       align="center" 
-      className='site-footer'
+      className='footer'
     >
       <h1>
       {'© '}

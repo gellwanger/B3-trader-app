@@ -8,8 +8,8 @@ class Login extends React.Component {
 
     this.state = {
       buttonDisable: true,
-      email: 'gustavo@gmail.com',
-      password: 123456,
+      email: '',
+      password: '',
     };
   }
 
@@ -34,9 +34,7 @@ class Login extends React.Component {
 
   handleClick = () => {
 		const { email } = this.state;
-   
     localStorage.setItem('user', JSON.stringify({ email }));
-
     window.location.href='http://localhost:3000/main'
   }
 
@@ -109,7 +107,7 @@ class Login extends React.Component {
             href="/create-new-account"
             data-testid="newUser"
           >
-            New Here? Create new Account
+            New Here? Create new account
           </a>
         <div>
         </div>

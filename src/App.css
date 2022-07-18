@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.buttonDisable {
+  display: flex;
+  justify-content: center;
+}
+
 .btn-home {
   margin-bottom: 12%;
 }
@@ -14,7 +19,15 @@
 
 .createLink {
   color: blue;
-  margin-left: 35%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  width: 100%;
+  margin: auto;
+  position: fixed;
+  bottom: 0;
 }
 
 .forms {
@@ -39,22 +52,15 @@
   margin-bottom: 1%;
 }
 
+.loading {
+  margin-top: 10%;
+  text-align: center;
+}
+
 .login_image{
   margin-top: 2%;
   margin-left: 34%;
   border-radius: 20%;
-}
-
-.new_user {
-  font-size:xx-large;
-  margin-top: 2%;
-  margin-bottom: 5%;
-  margin-left: 40%;
-}
-
-.new_user_icon{
-  margin-left: 45%;
-  width: 100px;
 }
 
 .main-form {
@@ -69,7 +75,7 @@
 .mainLogin {
   margin-top: 5%;
   margin-left: 40%;
-  margin-bottom: 10%;
+  margin-bottom: 3%;
 }
 
 .message {
@@ -77,12 +83,20 @@
   font-weight: bolder;
 }
 
-.site-footer {
-  position: relative;
-  left:0;
-  right:0;
-  bottom: 0;
-  padding-top: 10px;
+.nameList {
+  background-color: blue;
+}
+
+.new_user {
+  font-size:xx-large;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  margin-left: 40%;
+}
+
+.new_user_icon{
+  margin-left: 45%;
+  width: 100px;
 }
 
 .site_name {
@@ -94,10 +108,5 @@
 .table-light {
   background-color: rgb(211, 205, 205);
   font-weight: lighter;
-  padding-left: 15px;
-}
-
-.loading {
-  margin-top: 10%;
-  text-align: center;
+  padding-left: 5px;
 }
