@@ -12,17 +12,14 @@ $ npm install
 # Execute a aplicação
 $ npm start
 
-## 🚀 Utilizando
-
-## ⚙️ Executando os testes
+## Executando os testes
 $ npm run test
 
 ```
 ##  🚀 Utilizando
 ```
-<code><img src="https://drive.google.com/file/d/1ra4_NwwNUbNHjFHVxoZkMaqTi8W2dYZ1/view?usp=sharing.gif" width="40" height="40" /></code>
 
-<code><img src="https://drive.google.com/file/d/14_T9DxIqonAitPDN7d_bOT-qPAs2Ijzm/view?usp=sharing.gif" width="40" height="40" /></code>
+![Login](https://drive.google.com/file/d/1ra4_NwwNUbNHjFHVxoZkMaqTi8W2dYZ1/view?usp=sharing.gif)
 
 
 ```
