@@ -20,6 +20,8 @@ $ npm run test
 
 ![Login](https://github.com/gellwanger/B3-trader-app/blob/master/src/images/Login.gif?raw=true)
 
+![Trade](https://github.com/gellwanger/B3-trader-app/blob/master/src/images/Main.gif?raw=true)
+
 ## 🛠️ Construído com
 
 * [Cypress](https://www.cypress.io/) -  Fast, easy and reliable testing for anything that runs in a browser;
