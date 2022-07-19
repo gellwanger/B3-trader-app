@@ -28,6 +28,8 @@
   margin: auto;
   position: fixed;
   bottom: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .forms {
@@ -109,4 +111,9 @@
   background-color: rgb(211, 205, 205);
   font-weight: lighter;
   padding-left: 5px;
+}
+
+.github_image {
+  margin-right: 10px;
+  margin-left: 10px;
 }

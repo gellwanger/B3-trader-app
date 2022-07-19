@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Loading from '../components/Loading';
 import { getStock } from '../services/index';
 import ChallengeContext from '../context/ChallengeContext';
@@ -12,7 +12,7 @@ function Home() {
   const array = ['Token', 'Data', 'Company', 'Stock', 'Type',
     'Quantity', 'ValueStock', 'ValueTrade', 'Result']
   const columns = Object.values(array);
-  const { setNewBalance, newBalance } = useContext(ChallengeContext);
+  const { newBalance, setNewBalance } = useContext(ChallengeContext);
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -20,6 +20,11 @@ function Home() {
 
   const handleQuantity = ({ target }) => {
     setQuantity({ [target.name]: target.value });
+  }
+
+  const clearInputs = () => {
+    setStock('');
+    return setQuantity('');
   }
 
   const findCompany = async () => {
@@ -59,6 +64,7 @@ function Home() {
       setList([...list, newList]);
     }
     addItem();
+    clearInputs();
     return setLoading(false);
   }
 
@@ -68,14 +74,10 @@ function Home() {
     }, 10000);
   }
 
-  useEffect(() => {
-    localStorage.setItem('balance', JSON.stringify({ saldo: newBalance }));
-  }, [newBalance])
-
   const handleClick = async () => {
     const message = 'Código inválido. Verifique os dados e tente novamente.';
     if (stock.stock === undefined || quantity.trade === undefined) {
-      return global.alert();
+      return global.alert(message);
     } else if (stock.stock.endsWith(0)
       || stock.stock.endsWith(2)
       || stock.stock.endsWith(7)
@@ -118,7 +120,7 @@ function Home() {
                 <input
                   name="stock"
                   id="stock"
-                  onChange={handleStock}
+                  onChange={ handleStock }
                   placeholder="PETR4, VALE3, ALUP11, ..."
                   type="text"
                 />
@@ -133,7 +135,7 @@ function Home() {
                 <input
                   name="trade"
                   id="trade"
-                  onChange={handleQuantity}
+                  onChange={ handleQuantity }
                   placeholder="min: 1, max: 100"
                   type="number"
                 />
@@ -144,7 +146,7 @@ function Home() {
             className="btn-home bg-blue-500 hover:bg-blue-700 text-white 
               font-bold py-2 px-4 rounded-full"
             type={'button'}
-            onClick={handleClick}
+            onClick={ handleClick }
           >
             Trade
           </button>
