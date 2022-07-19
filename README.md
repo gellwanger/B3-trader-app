@@ -17,12 +17,9 @@ $ npm run test
 
 ```
 ##  🚀 Utilizando
-```
 
 [Login](https://github.com/gellwanger/B3-trader-app/blob/master/src/images/Login.gif)
 
-
-```
 ## 🛠️ Construído com
 
 * [Cypress](https://www.cypress.io/) -  Fast, easy and reliable testing for anything that runs in a browser;
