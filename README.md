@@ -19,7 +19,7 @@ $ npm run test
 ##  🚀 Utilizando
 ```
 
-![Login](https://drive.google.com/file/d/1ra4_NwwNUbNHjFHVxoZkMaqTi8W2dYZ1/view?usp=sharing.gif)
+![Login](https://github.com/gellwanger/B3-trader-app/blob/master/src/images/Login.gif)
 
 
 ```
