@@ -14,8 +14,7 @@
 
 .btn-home {
   margin-top: 10px;
-  margin-bottom: 12%;
-  
+  margin-bottom: 12%; 
 }
 
 .butonLogin {
@@ -65,7 +64,11 @@
 }
 
 .inputLogin {
-  padding: 3px;
+  width: 200px;
+  padding-left: 3px;
+  margin: 10px;
+  border-color: black;
+  border-width: 2px;
 }
 
 .list {

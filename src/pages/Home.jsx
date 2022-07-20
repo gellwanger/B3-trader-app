@@ -7,17 +7,18 @@ import Input from '../components/Input';
 import ChallengeContext from '../context/ChallengeContext';
 
 function Home() {
-    const { 
-      newBalance, 
-      setStock,
-      setQuantity,
-      stock,
-      quantity,
-      setLoading,
-      loadingTimer,
-      findCompany,
-      loading,
-    } = useContext(ChallengeContext);
+  const { 
+    newBalance, 
+    setStock,
+    setQuantity,
+    stock,
+    quantity,
+    setLoading,
+    loadingTimer,
+    findCompany,
+    loading,
+    setShowTable,
+  } = useContext(ChallengeContext);
 
   const handleStock = ({ target }) => {
     setStock({ [target.name]: target.value });
@@ -44,6 +45,7 @@ function Home() {
     } else if (newBalance < 0) {
       return global.alert('Você não tem mais saldo disponível.');
     } else {
+      setShowTable(true)
       setLoading(true);
       loadingTimer();
       return findCompany();

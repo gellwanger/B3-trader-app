@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Button from '../components/Button';
 import Copyright from '../components/Copyrigth';
@@ -6,7 +6,7 @@ import Input from '../components/Input';
 
 import login_image from '../images/login_image.jpg';
 
-class Login extends React.Component {
+class Login extends Component {
   constructor() {
     super();
 
@@ -43,7 +43,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { buttonDisable, email, password } = this.state;
+    const { buttonDisable } = this.state;
 
     return (
       <>
@@ -65,7 +65,6 @@ class Login extends React.Component {
             handleInputChange={this.onInputChange}
             typeInput='email'
             classInput='inputLogin'
-            valueInput={email}
           />
           <Input
             textLabel='Password:'
@@ -75,17 +74,18 @@ class Login extends React.Component {
             handleInputChange={this.onInputChange}
             typeInput='password'
             classInput='inputLogin'
-            valueInput={password}
           />
           </div>
           <div className='butonLogin'>
           <Button
-            classNameStyle={buttonDisable
+            classNameStyle={
+              buttonDisable
               ? `bg-red-500 text-white font-bold py-2 px-4 border-b-4 
-          border-red-700 rounded cursor-not-allowed w-min`
-              : `bg-green-500 hover:bg-green-400 text-white font-bold 
-          py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded
-          animate-pulse w-min` }
+              border-red-700 rounded cursor-not-allowed`
+                : `bg-green-500 hover:bg-green-400 text-white font-bold 
+              py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded
+              animate-pulse`
+        }
             handleClick={this.handleClick}
             typeBtn='button'
           >

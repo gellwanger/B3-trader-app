@@ -1,8 +1,12 @@
-import React from 'react';
-import userIcon from '../images/userIcon.png';
-import Copyright from '../components/Copyrigth';
+import React, { Component } from "react";
 
-class CreateNewAccount extends React.Component {
+import Button from '../components/Button';
+import Copyright from '../components/Copyrigth';
+import Input from '../components/Input';
+
+import userIcon from '../images/userIcon.png';
+
+class CreateNewAccount extends Component {
   constructor() {
     super();
 
@@ -10,7 +14,7 @@ class CreateNewAccount extends React.Component {
       buttonDisable: true,
       email: '',
       password: '',
-      confirmedPassword: '',
+      confirmPassword: '',
     };
   }
 
@@ -20,25 +24,24 @@ class CreateNewAccount extends React.Component {
   }
 
   enableButton = () => {
-    const { email, password, confirmedPassword } = this.state;
+    const { email, password, confirmPassword } = this.state;
     const minimumLength = 6;
     const minimumLengthPassword = 6;
 
     if (email.length >= minimumLength && email.includes('@')
-    && email.includes('.com')
-    && password.length >= minimumLengthPassword
-    && password === confirmedPassword) this.setState({ buttonDisable: false });
+      && email.includes('mail')
+      && email.includes('.com')
+      && password.length >= minimumLengthPassword
+      && password === confirmPassword) this.setState({ buttonDisable: false });
     else {
       this.setState({ buttonDisable: true });
     }
   }
 
   handleClick = () => {
-		const { email } = this.state;
-   
+    const { email } = this.state;
     localStorage.setItem('user', JSON.stringify({ email }));
-
-    window.location.href='http://localhost:3000/main'
+    window.location.href = 'http://localhost:3000/main'
   }
 
   render() {
@@ -47,61 +50,44 @@ class CreateNewAccount extends React.Component {
     return (
       <>
         <h1 className='new_user'>Create New User</h1>
-        <img 
-          alt="login" 
+        <img
+          alt="login"
           className='new_user_icon'
-          src={ userIcon } 
-          width="400" 
+          src={userIcon}
+          width="400"
         />
         <div
           className="mainLogin"
         >
-          <form 
-            className='forms'
-            onSubmit={ this.onInputChange }
-          >
-            <label
-              htmlFor="email"
-            >
-              E-mail:
-              {' '}
-              <input
-                type="email"
-                id="email"
-                name="email"
-                onChange={ this.onInputChange }
-                placeholder="enter your email here"
-              />
-            </label>
-            <label
-              htmlFor="password"
-            >
-              Password:
-              {' '}
-              <input
-                type="password"
-                id="password"
-                name="password"
-                onChange={ this.onInputChange }
-                placeholder="enter your password here"
-              />
-            </label>
-            <label
-              htmlFor="confirmedPassword"
-            >
-              Confirm password:
-              {' '}
-              <input
-                type="password"
-                id="confirmedPassword"
-                name="confirmedPassword"
-                onChange={ this.onInputChange }
-                placeholder="confirm your password"
-              />
-            </label>
-          </form>
-          <button
-            className={
+          <Input
+            classInput='inputLogin'
+            idLabel='email'
+            nameInput='email'
+            textLabel='Email:'
+            placeholderInput='enter your email here'
+            handleInputChange={this.onInputChange}
+            typeInput='email'
+          />
+          <Input
+            classInput='inputLogin'
+            idLabel='password'
+            textLabel='Password:'
+            nameInput='password'
+            placeholderInput='enter your password here'
+            handleInputChange={this.onInputChange}
+            typeInput='password'
+          />
+          <Input
+            classInput='inputLogin'
+            idLabel='confirmPassword'
+            nameInput='confirmPassword'
+            textLabel='Confirm password:'
+            placeholderInput='confirm your password'
+            handleInputChange={this.onInputChange}
+            typeInput='password'
+          />
+          <Button
+            classNameStyle={
               buttonDisable
                 ? `bg-red-500 text-white font-bold py-2 px-4 border-b-4 
               border-red-700 rounded cursor-not-allowed`
@@ -109,12 +95,11 @@ class CreateNewAccount extends React.Component {
               py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded
               animate-pulse`
             }
-            disabled={ buttonDisable }
-            type="button"
-            onClick={ this.handleClick }
+            handleClick={this.handleClick}
+            typeBtn='button'
           >
             Create
-          </button>
+          </Button>
         </div>
         <Copyright />
       </>

@@ -13,6 +13,7 @@ function ChallengeProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [stock, setStock] = useState([]);
   const [quantity, setQuantity] = useState([]);
+  const [showTable, setShowTable] = useState(false);
 
   const findCompany = async () => {
     const company = await getStock(stock.stock);
@@ -72,12 +73,15 @@ function ChallengeProvider({ children }) {
     loading,
     stock,
     quantity,
+    showTable,
+    setShowTable,
     setLoading,
     setStock,
     setQuantity,
     setNewBalance,
     findCompany,
     loadingTimer,
+    list,
   };
 
   return (
