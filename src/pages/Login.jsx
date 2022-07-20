@@ -1,6 +1,10 @@
 import React from 'react';
-import login_image from '../images/login_image.jpg';
+
+import Button from '../components/Button';
 import Copyright from '../components/Copyrigth';
+import Input from '../components/Input';
+
+import login_image from '../images/login_image.jpg';
 
 class Login extends React.Component {
   constructor() {
@@ -24,18 +28,18 @@ class Login extends React.Component {
     const minimumLengthPassword = 6;
 
     if (email.length >= minimumLength && email.includes('@')
-    && email.includes('mail')
-    && email.includes('.com')
-    && password.length >= minimumLengthPassword) this.setState({ buttonDisable: false });
+      && email.includes('mail')
+      && email.includes('.com')
+      && password.length >= minimumLengthPassword) this.setState({ buttonDisable: false });
     else {
       this.setState({ buttonDisable: true });
     }
   }
 
   handleClick = () => {
-		const { email } = this.state;
+    const { email } = this.state;
     localStorage.setItem('user', JSON.stringify({ email }));
-    window.location.href='http://localhost:3000/main'
+    window.location.href = 'http://localhost:3000/main'
   }
 
   render() {
@@ -44,71 +48,57 @@ class Login extends React.Component {
     return (
       <>
         <h1 className='challenge'>B3 Trader App</h1>
-        <img 
-          alt="login" 
+        <img
+          alt="login"
           className='login_image'
-          src={ login_image } 
-          width="400" 
+          src={login_image}
+          width="400"
         />
         <div
           className="mainLogin"
         >
-          <form 
-            className='forms'
-            onSubmit={ this.onInputChange }
-          >
-            <label
-              htmlFor="email"
-            >
-              E-mail:
-              {' '}
-              <input
-                type="email"
-                id="email"
-                name="email"
-                onChange={ this.onInputChange }
-                placeholder=" enter your email here"
-                value={ email }
-              />
-            </label>
-            <label
-              htmlFor="password"
-            >
-              Password:
-              {' '}
-              <input
-                type="password"
-                id="password"
-                name="password"
-                onChange={ this.onInputChange }
-                placeholder=" enter your password here"
-                value={ password }
-              />
-            </label>
-          </form>
-          <button
-            className={
-              buttonDisable
-                ? `bg-red-500 text-white font-bold py-2 px-4 border-b-4 
-              border-red-700 rounded cursor-not-allowed`
-                : `bg-green-500 hover:bg-green-400 text-white font-bold 
-              py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded
-              animate-pulse`
-            }
-            disabled={ buttonDisable }
-            type="button"
-            onClick={ this.handleClick }
+          <Input
+            textLabel='E-mail:'
+            idLabel='email'
+            nameInput='email'
+            placeholderInput="enter your email here"
+            handleInputChange={this.onInputChange}
+            typeInput='email'
+            classInput='inputLogin'
+            valueInput={email}
+          />
+          <Input
+            textLabel='Password:'
+            idLabel='password'
+            nameInput='password'
+            placeholderInput="enter your password here"
+            handleInputChange={this.onInputChange}
+            typeInput='password'
+            classInput='inputLogin'
+            valueInput={password}
+          />
+          </div>
+          <div className='butonLogin'>
+          <Button
+            classNameStyle={buttonDisable
+              ? `bg-red-500 text-white font-bold py-2 px-4 border-b-4 
+          border-red-700 rounded cursor-not-allowed w-min`
+              : `bg-green-500 hover:bg-green-400 text-white font-bold 
+          py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded
+          animate-pulse w-min` }
+            handleClick={this.handleClick}
+            typeBtn='button'
           >
             Entrar
-          </button>
+          </Button>
         </div>
-          <a
-            className="createLink"
-            href="/create-new-account"
-            data-testid="newUser"
-          >
-            New Here? Create new account
-          </a>
+        <a
+          className="createLink"
+          href="/create-new-account"
+          data-testid="newUser"
+        >
+          New Here? Create new account
+        </a>
         <div>
         </div>
         <Copyright />

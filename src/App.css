@@ -2,13 +2,28 @@
   text-align: center;
 }
 
+.borderInput {
+  border-width: 1px;
+  border-color: black;
+}
+
 .buttonDisable {
   display: flex;
   justify-content: center;
 }
 
 .btn-home {
+  margin-top: 10px;
   margin-bottom: 12%;
+  
+}
+
+.butonLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-left: 45%; */
+  margin-bottom: 3%;
 }
 
 .challenge {
@@ -26,15 +41,16 @@
 .footer {
   width: 100%;
   margin: auto;
+  padding: 5px;
   position: fixed;
   bottom: 0;
   display: flex;
   justify-content: center;
 }
 
-.forms {
-  display: flex;
-  flex-direction: column;
+.github_image {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .header_image {
@@ -46,6 +62,10 @@
   display: flex;
   margin: 0 90px;
   justify-content: space-between;
+}
+
+.inputLogin {
+  padding: 3px;
 }
 
 .list {
@@ -65,19 +85,19 @@
   border-radius: 20%;
 }
 
-.main-form {
-  margin-left: 28%;
-  margin-bottom: 15px;
-}
-
 .mainHome {
-  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
 
 .mainLogin {
-  margin-top: 5%;
-  margin-left: 40%;
-  margin-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 1%;
 }
 
 .message {
@@ -111,9 +131,4 @@
   background-color: rgb(211, 205, 205);
   font-weight: lighter;
   padding-left: 5px;
-}
-
-.github_image {
-  margin-right: 10px;
-  margin-left: 10px;
 }
