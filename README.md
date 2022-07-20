@@ -17,12 +17,11 @@ $ npm run test
 
 ```
 ##  🚀 Utilizando
-```
 
-![Login](https://drive.google.com/file/d/1ra4_NwwNUbNHjFHVxoZkMaqTi8W2dYZ1/view?usp=sharing.gif)
+![Login](https://github.com/gellwanger/B3-trader-app/blob/master/src/images/Login.gif?raw=true)
 
+![Trade](https://github.com/gellwanger/B3-trader-app/blob/master/src/images/Main.gif?raw=true)
 
-```
 ## 🛠️ Construído com
 
 * [Cypress](https://www.cypress.io/) -  Fast, easy and reliable testing for anything that runs in a browser;
