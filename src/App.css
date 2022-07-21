@@ -130,6 +130,16 @@
   margin-bottom: 30px;
 }
 
+.stockCard {
+  border-color: black;
+  border-width: 1px;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  height: 300px;
+  width: 400px;
+}
+
 .table-light {
   background-color: rgb(211, 205, 205);
   font-weight: lighter;

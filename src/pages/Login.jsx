@@ -39,7 +39,7 @@ class Login extends Component {
   handleClick = () => {
     const { email } = this.state;
     localStorage.setItem('user', JSON.stringify({ email }));
-    window.location.href = 'http://localhost:3000/main'
+    window.location.href = '/main'
   }
 
   render() {
