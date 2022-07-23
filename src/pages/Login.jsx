@@ -47,59 +47,57 @@ class Login extends Component {
 
     return (
       <>
-        <h1 className='challenge'>B3 Trader App</h1>
-        <img
-          alt="login"
-          className='login_image'
-          src={login_image}
-          width="400"
-        />
-        <div
-          className="mainLogin"
-        >
-          <Input
-            textLabel='E-mail:'
-            idLabel='email'
-            nameInput='email'
-            placeholderInput="enter your email here"
-            handleInputChange={this.onInputChange}
-            typeInput='email'
-            classInput='inputLogin'
-          />
-          <Input
-            textLabel='Password:'
-            idLabel='password'
-            nameInput='password'
-            placeholderInput="enter your password here"
-            handleInputChange={this.onInputChange}
-            typeInput='password'
-            classInput='inputLogin'
-          />
+        <h1 className='loginTitle'>B3 Trader App</h1>
+        <div className='mainLogin'>
+          <div className='imageLogin'>
+            <img
+              alt="login"
+              className='login_image'
+              src={login_image}
+              width="500"
+            />
           </div>
-          <div className='butonLogin'>
-          <Button
-            classNameStyle={
-              buttonDisable
-              ? `bg-red-500 text-white font-bold py-2 px-4 border-b-4 
+          <div className='loginInput'>
+            <Input
+              textLabel='What is your email?'
+              idLabel='email'
+              nameInput='email'
+              placeholderInput="enter your email here"
+              handleInputChange={this.onInputChange}
+              typeInput='email'
+              classInput='inputLogin'
+            />
+            <Input
+              textLabel='Enter your password, please.'
+              idLabel='password'
+              nameInput='password'
+              placeholderInput="enter your password here"
+              handleInputChange={this.onInputChange}
+              typeInput='password'
+              classInput='inputLogin'
+            />
+            <Button
+              classNameStyle={
+                buttonDisable
+                  ? `bg-red-500 text-white font-bold py-2 px-4 border-b-4 
               border-red-700 rounded cursor-not-allowed`
-                : `bg-green-500 hover:bg-green-400 text-white font-bold 
+                  : `bg-green-500 hover:bg-green-400 text-white font-bold 
               py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded
               animate-pulse`
-        }
-            handleClick={this.handleClick}
-            typeBtn='button'
-          >
-            Entrar
-          </Button>
-        </div>
-        <a
-          className="createLink"
-          href="/create-new-account"
-          data-testid="newUser"
-        >
-          New Here? Create new account
-        </a>
-        <div>
+              }
+              handleClick={this.handleClick}
+              typeBtn='button'
+            >
+              Entrar
+            </Button>
+            <a
+              className="createLink"
+              href="/create-new-account"
+              data-testid="newUser"
+            >
+              New Here? Create new account
+            </a>
+          </div>
         </div>
         <Copyright />
       </>

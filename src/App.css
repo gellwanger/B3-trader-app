@@ -17,24 +17,11 @@
   margin-bottom: 12%; 
 }
 
-.butonLogin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* margin-left: 45%; */
-  margin-bottom: 3%;
-}
-
-.challenge {
-  font-size:xx-large;
-  margin-top: 2%;
-  margin-left: 40%;
-}
-
 .createLink {
   color: blue;
   display: flex;
   justify-content: center;
+  margin: 30px;
 }
 
 .footer {
@@ -63,12 +50,20 @@
   justify-content: space-between;
 }
 
+.imageLogin {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 .inputLogin {
-  width: 200px;
-  padding-left: 3px;
-  margin: 10px;
   border-color: black;
   border-width: 2px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 3px;
+  margin: 5px;
+  width: 400px;
 }
 
 .list {
@@ -88,6 +83,22 @@
   border-radius: 20%;
 }
 
+.loginInput {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.loginTitle {
+  font-size:xx-large;
+  display: block;
+  margin: 50px;
+  text-align: center;
+}
+
 .mainHome {
   align-items: center;
   display: flex;
@@ -97,10 +108,7 @@
 
 .mainLogin {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 1%;
+  flex-direction: row;
 }
 
 .message {
