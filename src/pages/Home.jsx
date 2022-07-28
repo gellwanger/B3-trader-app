@@ -71,7 +71,7 @@ function Home() {
             classInput='borderInput block text-gray-900 font-bold md:text-center mb-1 md:mb-0 pr-4 w-min max-w-sm'
           />
           <Input
-            textLabel='Choose stock to trade:'
+            textLabel='Choose quantity to trade:'
             idLabel='trade'
             nameInput='trade'
             placeholderInput="min: 1, max: 100"
