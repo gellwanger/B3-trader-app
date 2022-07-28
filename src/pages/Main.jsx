@@ -8,9 +8,7 @@ import Table from '../components/Table';
 import ChallengeContext from '../context/ChallengeContext';
 
 function Main() {
-  const {
-    list,
-  } = useContext(ChallengeContext);
+  const { list } = useContext(ChallengeContext);
 
   return(
     <>

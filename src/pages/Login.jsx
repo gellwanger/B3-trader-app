@@ -37,9 +37,16 @@ class Login extends Component {
   }
 
   handleClick = () => {
-    const { email } = this.state;
-    localStorage.setItem('user', JSON.stringify({ email }));
-    window.location.href = '/main'
+    const { buttonDisable } = this.state;
+
+    if (buttonDisable === false) {
+      const { email } = this.state;
+      localStorage.setItem('user', JSON.stringify({ email }));
+      window.location.href = '/main'
+    } else {
+      return;
+    }
+
   }
 
   render() {

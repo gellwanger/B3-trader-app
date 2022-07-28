@@ -1,14 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Login from '../pages/Login';
-import userEvent from '@testing-library/user-event';
 
 describe('Testa se todos os elementos pré-definidos estão renderizados na tela inicial', () => {
   const setup = () => render(<Login />);
 
-  test("Verifica se tem o texto 'e-mail' na tela inicial", () => {
+  test("Verifica se tem o texto 'email' na tela inicial", () => {
     setup();
-    const email = screen.getByText('e-mail', {exact: false});
+    const email = screen.getByText('email', {exact: false});
     expect(email).toBeInTheDocument();
   });
   
@@ -34,36 +33,5 @@ describe('Testa se todos os elementos pré-definidos estão renderizados na tela
     setup();
     const button = screen.getAllByRole('button')
     expect(button).toHaveLength(1);
-  });
-});
-
-describe('Testa a funcionalidade da página', () => {
-  const setup = () => render(<Login />);
-
-  test("Verifica fazer login com os dados corretos", () => {
-    setup();
-    userEvent.type(screen.getByPlaceholderText('enter your email here'), 'teste@gmail.com');
-    userEvent.type(screen.getByPlaceholderText('enter your password here'), '12345678');
-    const allowButton = screen.getByRole('button');
-
-    expect(allowButton).toBeEnabled();
-  });
-
-  test("Verifica fazer login com o email incorreto", () => {
-    setup();
-    userEvent.type(screen.getByPlaceholderText('enter your email here'), 'teste@.com');
-    userEvent.type(screen.getByPlaceholderText('enter your password here'), '12345678');
-    const allowButton = screen.getByRole('button');
-
-    expect(allowButton).toBeDisabled();
-  });
-
-  test("Verifica fazer login com a senha incorreta", () => {
-    setup();
-    userEvent.type(screen.getByPlaceholderText('enter your email here'), 'teste@teste.com');
-    userEvent.type(screen.getByPlaceholderText('enter your password here'), '12345');
-    const allowButton = screen.getByRole('button');
-
-    expect(allowButton  ).toBeDisabled();
   });
 });

@@ -14,6 +14,7 @@ $ npm start
 
 ## Executando os testes
 $ npm run test
+$ npx cypress open
 
 ```
 ##  🚀 Utilizando
